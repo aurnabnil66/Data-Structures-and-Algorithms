@@ -31,5 +31,5 @@ for node, edges in enumerate(graph):
     
 starting_node = int(input("Enter starting node : "))
     
-dfs(graph, starting_node)
-#print("Visited Nodes : ",result)
+result = dfs(graph, starting_node)
+print("Visited Nodes : ",result)
