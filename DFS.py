@@ -1,17 +1,16 @@
 # Depth First Search Algorithm
 
-def dfs(graph, starting_node, visited=None):
-    if visited is None:
-        visited = set()
-    visited.add(starting_node)
-    
-    for next_node in graph[starting_node] - visited:
-        dfs(graph, next_node, visited)
-    
-    return visited
-    
+visited = set()   # setting visited set as global
+def dfs(graph, starting_node, visited):
+    if starting_node not in visited:
+        print(starting_node)
+        visited.add(starting_node)
+        for edge_node in graph[starting_node]:
+            dfs(graph, edge_node, visited)
+        
     
 num_of_nodes = int(input("Enter number of nodes : "))
+print("Enter nodes and edges like (node edge) : ")
 
 graph = [[] for _ in range(num_of_nodes)]  # Initialize empty graph
 
@@ -31,5 +30,4 @@ for node, edges in enumerate(graph):
     
 starting_node = int(input("Enter starting node : "))
     
-result = dfs(graph, starting_node)
-print("Visited Nodes : ",result)
+dfs(graph, starting_node, visited)
